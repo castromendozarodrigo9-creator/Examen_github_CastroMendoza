@@ -1,0 +1,151 @@
+/* styles.css - estilos para index.html */
+
+/* Tipografía y variables de color */
+:root{
+  --bg: #f2f7f9;
+  --card: #ffffff;
+  --accent: #1e90ff;
+  --muted: #55606a;
+  --heading: #0b3b5c;
+  --accent-2: #ff7a59;
+  --shadow: 0 6px 18px rgba(11,59,92,0.08);
+  --max-width: 1100px;
+  --font-sans: "Arial", "Helvetica", sans-serif;
+}
+
+/* Reset sencillo */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: var(--font-sans);
+  background: linear-gradient(180deg, var(--bg), #e9f3f7 60%);
+  color: var(--muted);
+  line-height:1.6;
+  padding:30px;
+  display:flex;
+  justify-content:center;
+}
+
+/* Contenedor central */
+body > *{
+  width:100%;
+  max-width: var(--max-width);
+}
+
+/* Encabezado */
+.site-header{
+  background: var(--card);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+  text-align:center;
+}
+.site-header h1{
+  color: var(--heading);
+  font-size: 2.1rem;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+.site-header .lead{
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* Secciones */
+section, nav, article{
+  background: var(--card);
+  padding: 18px 22px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+/* Títulos secundarios */
+h2{
+  color: var(--accent);
+  font-size: 1.4rem;
+  margin-bottom:10px;
+}
+h3{
+  color: var(--accent-2);
+  font-size: 1.15rem;
+  margin-bottom:8px;
+}
+
+/* Párrafos */
+p{
+  margin-bottom: 10px;
+  color: #34414a;
+  font-size: 0.98rem;
+}
+
+/* Imágenes de actividades */
+.activity img{
+  display:block;
+  width:100%;
+  max-height:350px;
+  object-fit:cover;
+  border-radius:8px;
+  margin:10px 0 12px 0;
+  border:1px solid rgba(11,59,92,0.06);
+}
+
+/* Listas */
+ol, ul{
+  margin-left: 18px;
+  margin-bottom: 10px;
+}
+ol li{
+  margin-bottom: 6px;
+  padding-left:6px;
+}
+ul.tips-list li{
+  margin-bottom:8px;
+  list-style: disc;
+}
+
+/* Navegación interna y alignment */
+.intro, .why{
+  text-align: left;
+}
+
+/* Actividades en columnas (responsive) */
+.activities{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.activity{
+  padding:14px;
+}
+
+/* Footer */
+.site-footer{
+  text-align:center;
+  padding:14px;
+  font-size:0.92rem;
+  background:transparent;
+  color: var(--muted);
+  margin-top:6px;
+}
+
+/* Enlaces */
+a{
+  color: var(--heading);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(11,59,92,0.08);
+}
+a:hover{
+  color: var(--accent);
+  border-bottom-style: solid;
+}
+
+/* Responsive */
+@media (min-width: 880px){
+  .activities{
+    grid-template-columns: 1fr 1fr;
+  }
+  .site-header h1{font-size:2.6rem}
+  body{padding:40px}
+}
