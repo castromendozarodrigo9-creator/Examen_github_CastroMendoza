@@ -1,0 +1,123 @@
+// ...existing code...
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Actividades: Deporte y Cultura</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background:#f7f7f7; }
+        h1 { color:#2b6cb0 }
+        table { border-collapse: collapse; width: 100%; background:#fff; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background:#2b6cb0; color:#fff; }
+        tr:nth-child(even){ background:#f2f6fb }
+        .controls { margin: 12px 0; }
+        .badge { display:inline-block; padding:4px 8px; border-radius:12px; background:#edf2f7; margin-right:6px }
+    </style>
+</head>
+<body>
+    <h1>Actividades deportivas y culturales</h1>
+
+    <div class="controls">
+        <label>Filtrar por categoría:
+            <select id="filtro" onchange="filtrar()">
+                <option value="Todas">Todas</option>
+                <option value="Deporte">Deporte</option>
+                <option value="Cultura">Cultura</option>
+            </select>
+        </label>
+        <span class="badge">Total: <span id="contador">0</span></span>
+    </div>
+
+    <table id="tabla-actividades">
+        <thead>
+            <tr>
+                <th>Categoría</th>
+                <th>Actividad</th>
+                <th>Descripción</th>
+                <th>Día</th>
+                <th>Hora</th>
+                <th>Lugar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Deporte</td>
+                <td>Fútbol amateur</td>
+                <td>Partidos amistosos para todas las edades</td>
+                <td>Sábados</td>
+                <td>10:00 - 12:00</td>
+                <td>Cancha municipal</td>
+            </tr>
+            <tr>
+                <td>Deporte</td>
+                <td>Yoga al aire libre</td>
+                <td>Clases para principiantes y nivel intermedio</td>
+                <td>Miércoles</td>
+                <td>07:00 - 08:00</td>
+                <td>Parque central</td>
+            </tr>
+            <tr>
+                <td>Deporte</td>
+                <td>Gimnasia funcional</td>
+                <td>Entrenamiento en circuito</td>
+                <td>Martes y Jueves</td>
+                <td>18:00 - 19:00</td>
+                <td>Polideportivo</td>
+            </tr>
+            <tr>
+                <td>Cultura</td>
+                <td>Taller de pintura</td>
+                <td>Técnicas básicas y acuarela</td>
+                <td>Viernes</td>
+                <td>16:00 - 18:00</td>
+                <td>Casa de la cultura</td>
+            </tr>
+            <tr>
+                <td>Cultura</td>
+                <td>Club de lectura</td>
+                <td>Lectura y debate mensual</td>
+                <td>Primer lunes</td>
+                <td>19:00 - 20:30</td>
+                <td>Biblioteca pública</td>
+            </tr>
+            <tr>
+                <td>Cultura</td>
+                <td>Taller de teatro</td>
+                <td>Interpretación y expresión corporal</td>
+                <td>Sábados</td>
+                <td>14:00 - 16:00</td>
+                <td>Auditorio</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Actualiza contador y aplica filtro por categoría
+        function actualizarContador() {
+            const filas = document.querySelectorAll('#tabla-actividades tbody tr');
+            document.getElementById('contador').textContent = filas.length;
+        }
+
+        function filtrar() {
+            const filtro = document.getElementById('filtro').value;
+            const filas = document.querySelectorAll('#tabla-actividades tbody tr');
+            let visibles = 0;
+            filas.forEach(fila => {
+                const categoria = fila.cells[0].textContent.trim();
+                const mostrar = (filtro === 'Todas') || (categoria === filtro);
+                fila.style.display = mostrar ? '' : 'none';
+                if (mostrar) visibles++;
+            });
+            document.getElementById('contador').textContent = visibles;
+        }
+
+        // Inicializar contador
+        window.addEventListener('DOMContentLoaded', () => {
+            actualizarContador();
+        });
+    </script>
+</body>
+</html>
+// ...existing code...
